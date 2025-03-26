@@ -1,0 +1,79 @@
+name: Retirement Calculator CI/CD
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    test-and-build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+                  cache: "npm"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Lint markdown
+              run: npm run lint:md
+
+            - name: TypeScript type checking
+              run: npm run type-check
+
+            - name: Lint code
+              run: npm run lint
+
+            - name: Run unit tests
+              run: npx jest --config=jest.config.ci.js
+              env:
+                  CI: true
+
+            - name: Build application
+              run: npm run build
+
+            # Optional: If you want to run e2e tests
+            # - name: Run E2E tests
+            #   run: npm run test:e2e
+
+            - name: Upload test results
+              if: always()
+              uses: actions/upload-artifact@v3
+              with:
+                  name: test-results
+                  path: junit.xml
+
+    deploy:
+        needs: test-and-build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+                  cache: "npm"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Deploy to Vercel
+              uses: amondnet/vercel-action@v20
+              with:
+                  vercel-token: ${{ secrets.VERCEL_TOKEN }}
+                  vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+                  vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+                  working-directory: ./
+                  vercel-args: "--prod"

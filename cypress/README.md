@@ -26,6 +26,7 @@ npm run test:e2e:dev
 ```
 
 This will:
+
 1. Start the Next.js development server
 2. Open the Cypress test runner UI
 3. Allow you to run tests interactively
@@ -39,6 +40,7 @@ npm run test:e2e
 ```
 
 This will:
+
 1. Start the Next.js production server
 2. Run all Cypress tests in headless mode
 3. Show the results in the terminal
@@ -62,16 +64,16 @@ Our tests follow a pattern of:
 
 We've created several custom Cypress commands to make tests more readable:
 
-- `fillRetirementForm()` - Fill the retirement calculator form with custom values
-- `calculateRetirement()` - Click the Calculate button and wait for results
-- `resetRetirementForm()` - Click the Reset button
-- `verifyRetirementResults()` - Verify that retirement results are displayed correctly
+-   `fillRetirementForm()` - Fill the retirement calculator form with custom values
+-   `calculateRetirement()` - Click the Calculate button and wait for results
+-   `resetRetirementForm()` - Click the Reset button
+-   `verifyRetirementResults()` - Verify that retirement results are displayed correctly
 
 ## Key Features Tested
 
-- Form validation and error handling
-- Calculations with different input values
-- Currency switching (INR/USD)
-- Chart display and interaction
-- Responsive layout on different screen sizes
-- Dark mode styling 
+-   Form validation and error handling
+-   Calculations with different input values
+-   Currency switching (INR/USD)
+-   Chart display and interaction
+-   Responsive layout on different screen sizes
+-   Dark mode styling
