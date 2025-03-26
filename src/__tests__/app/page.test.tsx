@@ -1,11 +1,23 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import Home from '../../app/page';
+import { Currency } from '../../app/components/InputForm';
+
+// Define a type for form data
+interface FormData {
+  currentAge: number;
+  retirementAge: number;
+  currentSavings: number;
+  monthlyContribution: number;
+  expectedRateOfReturn: number;
+  inflationRate: number;
+  currency: Currency;
+}
 
 // Mock the components used by the page
 jest.mock('../../app/components/InputForm', () => ({
   __esModule: true,
-  default: jest.fn(({ onSubmit }: { onSubmit: (data: any) => void }) => (
+  default: jest.fn(({ onSubmit }: { onSubmit: (data: FormData) => void }) => (
     <div data-testid="input-form-mock">
       <button onClick={() => onSubmit({
         currentAge: 35,
@@ -22,9 +34,19 @@ jest.mock('../../app/components/InputForm', () => ({
   ))
 }));
 
+// Define a type for chart data
+interface ChartData {
+  currency: Currency;
+  labels: string[];
+  initialSavingsData: number[];
+  contributionsData: number[];
+  totalData: number[];
+  yearsToRetirement: number;
+}
+
 jest.mock('../../app/components/SavingsChart', () => ({
   __esModule: true,
-  default: jest.fn(({ chartData }: { chartData: any }) => (
+  default: jest.fn(({ chartData }: { chartData: ChartData }) => (
     <div data-testid="savings-chart-mock">
       Chart Component (Currency: {chartData.currency})
     </div>

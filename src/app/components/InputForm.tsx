@@ -1,12 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { 
-  calculateCompoundInterest, 
-  calculateFutureValueOfContributions, 
-  calculateInflationAdjustedValue, 
-  calculateRetirementSavings 
-} from '../../utils/financialCalculations';
 
 export type Currency = 'INR' | 'USD';
 
@@ -53,7 +47,6 @@ export default function InputForm({ onSubmit }: InputFormProps) {
     
     if (name === 'currency') {
       // Convert values when changing currency
-      const conversionRate = value === 'USD' ? 0.012 : 83.33; // Approximate INR to USD and USD to INR rates
       const previousCurrency = formData.currency;
       
       if (previousCurrency !== value) {

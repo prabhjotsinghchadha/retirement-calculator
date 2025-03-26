@@ -107,7 +107,7 @@ export default function Home() {
                       {chartData?.currency === 'INR' ? '₹' : '$'}{calculationResult.inflationAdjustedSavings.toLocaleString()}
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      (Value in today's {chartData?.currency === 'INR' ? 'rupees' : 'dollars'})
+                      (Value in today&apos;s {chartData?.currency === 'INR' ? 'rupees' : 'dollars'})
                     </p>
                   </div>
                 </div>
