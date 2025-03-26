@@ -57,8 +57,8 @@ describe('Home page', () => {
   test('renders the page title and InputForm', () => {
     render(<Home />);
     
-    // Check for header content
-    expect(screen.getByText(/Retirement Calculator/i)).toBeInTheDocument();
+    // Check for header content - use heading role to be more specific
+    expect(screen.getByRole('heading', { name: /Retirement Calculator/i })).toBeInTheDocument();
     expect(screen.getByText(/Plan your financial future/i)).toBeInTheDocument();
     
     // Check if Input Form is rendered

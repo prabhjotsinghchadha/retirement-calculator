@@ -14,7 +14,8 @@
     "cypress": "cypress open",
     "cypress:run": "cypress run",
     "test:e2e": "start-server-and-test 'npm start' 3000 'npm run cypress:run'",
-    "test:e2e:dev": "start-server-and-test 'npm run dev' 3000 'npm run cypress'"
+    "test:e2e:dev": "start-server-and-test 'npm run dev' 3000 'npm run cypress'",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "chart.js": "^4.4.8",

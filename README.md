@@ -22,41 +22,46 @@ Check out the live application: [Retirement Calculator](https://retirement-calcu
 
 ### Prerequisites
 
-- Node.js 18.0 or higher
+- Node.js 18.0.0 or higher
 - npm or yarn
 
 ### Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/retirement-calc.git
-cd retirement-calc
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/retirement-calculator.git
+   cd retirement-calculator
+   ```
 
-# Install dependencies
-npm install
-# or
-yarn install
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-### Running the Development Server
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+## ⚙️ Available Scripts
 
-### Building for Production
-
-```bash
-npm run build
-npm start
-# or
-yarn build
-yarn start
-```
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm start` - Start the production server
+- `npm run lint` - Run ESLint to check code quality
+- `npm run type-check` - Run TypeScript type checking
+- `npm test` - Run tests using Jest
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run test:all` - Run all tests in the __tests__ directory
+- `npm run cypress` - Open Cypress for E2E testing
+- `npm run test:e2e` - Run E2E tests in headless mode
 
 ## 📊 How It Works
 
